@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>redious</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>A Simple Calculator</h1>
+    <table>
+      <tr>
+        <td colspan="4"><input type="text" id="answer" /></td>
+      </tr>
+      <tr>
+        <td><button onclick="clearAnswer()">c</button></td>
+        <td>
+          <button onclick="disaplay('/')">/</button>
+        </td>
+        <td><button onclick="disaplay('%')">%</button></td>
+        <td>
+          <button onclick="backspace()">
+            <i class="material-icons">backspace</i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td><button onclick="disaplay('7')">7</button></td>
+        <td><button onclick="disaplay('8')">8</button></td>
+        <td><button onclick="disaplay('9')">9</button></td>
+        <td><button onclick="disaplay('*')">*</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="disaplay('4')">4</button></td>
+        <td><button onclick="disaplay('5')">5</button></td>
+        <td><button onclick="disaplay('6')">6</button></td>
+        <td><button onclick="disaplay('-')">-</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="disaplay('1')">1</button></td>
+        <td><button onclick="disaplay('2')">2</button></td>
+        <td><button onclick="disaplay('3')">3</button></td>
+        <td><button onclick="disaplay('+')" class="plus">+</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="disaplay('0')">0</button></td>
+        <td><button onclick="disaplay('.')">.</button></td>
+        <td id="x" colspan="2"><button id="x" onclick="equal( )">=</button></td>
+      </tr>
+    </table>
+    <script>
+      function disaplay(val) {
+        document.getElementById("answer").value += val;
+      }
+      function clearAnswer() {
+        document.getElementById("answer").value = "";
+      }
+      function backspace() {
+        var answer = document.getElementById("answer").value;
+        document.getElementById("answer").value = answer.substr(
+          0,
+          answer.length - 1
+        );
+      }
+      function equal() {
+        var x = document.getElementById("answer").value;
+        var y = eval(x);
+        document.getElementById("answer").value = y;
+      }
+
+      var answer = document.getElementById("answer");
+      answer.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("equal").click();
+        }
+      });
+    </script>
+    <div></div>
+  </body>
+</html>
